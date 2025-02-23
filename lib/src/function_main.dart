@@ -9,6 +9,10 @@ class PingNotificationManager {
   bool _pingInit = false;
   bool _pingStatusConexion = false;
   final ChangeConexion _controllerConexion = ChangeConexion();
+  bool verificarUseMaterial(BuildContext context) {
+    return context.findAncestorWidgetOfExactType<MaterialApp>() != null;
+  }
+
   void startPingNotification(PingRequire req) async {
     bool pingReturn = await ping.ping(req);
     if (pingReturn) {
@@ -16,6 +20,15 @@ class PingNotificationManager {
         (e) {
           if (!_pingInit || _pingStatusConexion == e.conexion) {
             return;
+          }
+          if (e.conexion) {
+            if (req.okConexion != null) {
+              req.okConexion!(e);
+            }
+          } else {
+            if (req.errorConexion != null) {
+              req.errorConexion!(e);
+            }
           }
           _pingStatusConexion = e.conexion;
           _controllerConexion.change(e.conexion);
@@ -32,6 +45,10 @@ class PingNotificationManager {
     bool pingAutomatic = true,
     PingRequire? pingRequire,
   }) {
+    if (!verificarUseMaterial(context)) {
+      print('use in MaterialApp()');
+      return;
+    }
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
         notificationRequire ??= RequirePingNotification.def;
