@@ -3,6 +3,10 @@
 
 Ping Notification es una librería de Flutter que permite realizar pings a servidores y recibir notificaciones sobre el estado de la conexión.
 
+## ScreenShot
+![Ping Notification corecto](https://raw.githubusercontent.com/surco123es/ping_notification/refs/heads/main/sreenShot/12354.png)
+![Ping Notification error ](https://raw.githubusercontent.com/surco123es/ping_notification/refs/heads/main/sreenShot/1235.png)
+
 ## Instalación
 
 Agrega la dependencia en tu archivo `pubspec.yaml`:

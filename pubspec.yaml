@@ -1,7 +1,7 @@
 name: ping_notification
 description: "Ping Notification es una librería de Flutter"
-version: 0.0.2
-homepage:
+version: 0.0.3
+homepage: https://github.com/surco123es/ping_notification
 
 environment:
   sdk: ^3.6.1
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  network_ping: ^1.0.3
+  network_ping: ^1.0.4
 
 dev_dependencies:
   flutter_test:

@@ -43,7 +43,6 @@ class PingNotificationManager {
     required BuildContext context,
     RequirePingNotification? notificationRequire,
     bool pingAutomatic = true,
-    PingRequire? pingRequire,
   }) {
     if (!verificarUseMaterial(context)) {
       print('use in MaterialApp()');
@@ -53,6 +52,10 @@ class PingNotificationManager {
       (_) {
         notificationRequire ??= RequirePingNotification.def;
 
+        PingRequire pingRequire = PingRequire(
+          host: notificationRequire?.host ?? 'www.google.com',
+          forcePing: true,
+        );
         if (!_pingInit) {
           Overlay.of(context, rootOverlay: true).insert(OverlayEntry(
             builder: (context) => Material(
@@ -77,7 +80,7 @@ class PingNotificationManager {
           ));
           _pingInit = true;
           if (pingAutomatic) {
-            startPingNotification(pingRequire ?? PingRequire.pingDefault);
+            startPingNotification(pingRequire);
           }
         }
       },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ping_notification/model/require_ping.dart';
 import 'package:ping_notification/ping_notification.dart';
 
 void main() {
@@ -31,7 +32,9 @@ class HomePage extends StatelessWidget {
   final PingNotificationManager pingManager = PingNotificationManager();
   @override
   Widget build(BuildContext context) {
-    pingManager.initConfigurationPingNotification(context: context);
+    pingManager.initConfigurationPingNotification(
+      context: context,
+    );
     return Scaffold(
       appBar: AppBar(
         title: const Text('Plugin example app'),
